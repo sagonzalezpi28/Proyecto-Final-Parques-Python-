@@ -86,15 +86,15 @@ def iniciarModoGrafico():
     LF = Label(Pan, image=fondo)
     LF.img = fondo
     LF.pack()
-    LB = Label(Pan, text="BIENVENIDOS A NUESTRO JUEGO", font=("Times New Roman", 30))
-    LB.place(x=10, y=10)
+    LB = Label(Pan, text="PARCHIS", font=("Times New Roman", 30))
+    LB.place(x=240, y=10)
     # Se crea el botón de inicio, adaptado para Windows y otros sistemas
     if OS == "Windows":
         BTN = Button(Pan, text="INICIAR", command=lambda: threading.Thread(target=comenzarJuego).start(),
                      font=("Algerian", 40))
     else:
         BTN = Button(Pan, text="INICIAR", command=comenzarJuego, font=("Algerian", 40))
-    BTN.place(x=100, y=100)
+    BTN.place(x=250, y=200)
     Pan.mainloop()
 
 # La clase 'jugador' representa a cada participante del juego.
@@ -695,7 +695,7 @@ def solicitarDatos():
     texto_ingresado = ""
     n = 0
     if mod > 1:
-        Esp = Label(Pan, text="Esperando Jugadores...", bg="white", fg="black", font=("Times New Roman", 32))
+        Esp = Label(Pan, text="COMPETIDORES ", bg="white", fg="black", font=("Times New Roman", 32))
         Esp.place(y=0, x=0)
         if mod < 3:
             Ins = Label(Pan, text="Digite las entradas en su input de consola...", bg="black", fg="white",
@@ -807,6 +807,7 @@ def juegoTerminado(Jugadores):
     Verifica si el juego ha terminado.
     Jugadores: lista de objetos 'jugador'.
     True si el juego termina (cuando solo queda un jugador sin ganar), False en otro caso.
+
     """
     numberWonPlayers = 0  # Cuenta el número de jugadores que ya han ganado
     for jugadorActual in Jugadores:
@@ -1029,6 +1030,9 @@ def ejecutarMovimiento(movimientoRealizar, tablero, jugadorActual, Jugadores):
             POSICION += 1
             jugadorActual.GanoJugador = True
         if mod > 1:
+            """
+            Mostramos el mensaje de que cierto jugador ganó
+            """
             tkinter.messagebox.showinfo("copa", FichaMover.nombreFicha + " ganó copa.")
         listaMovi = movimientosPosibles(jugadorActual, 10, Jugadores)
         if listaMovi and len(listaMovi) == 1:
