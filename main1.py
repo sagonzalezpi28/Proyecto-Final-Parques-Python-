@@ -756,7 +756,7 @@ def solicitarDatos():
     else:
         print("Presione enter para continuar (ó digite la contraseña para modo desarrollador):")
         x = input()
-    if x == "mazamorra":
+    if x == "KUCHAW":
         global desa
         desa = True
     registrarDato("\n")
